@@ -7,7 +7,7 @@
 <meta name="description" content="3D sing-along nursery rhymes for toddlers and preschoolers (ages 2–6). A new song every day with Zuzu and friends on YouTube.">
 <meta property="og:title" content="Nursery Rhymes World Z">
 <meta property="og:description" content="3D sing-along nursery rhymes for ages 2–6. A new song every day.">
-<meta property="og:image" content="https://iasifk89.github.io/nurseryrhymesworld-site/hero.webp">
+<meta property="og:image" content="https://nurseryrhymesworldz.com/hero.webp">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -140,6 +140,24 @@
   .parents li + li { margin-top: 8px; }
   .parents .pic { border-radius: var(--radius-big); width: 100%; height: auto; }
 
+  .feedback { background: var(--card); }
+  .feedback form { margin-top: 24px; max-width: 560px; display: grid; gap: 14px; }
+  .feedback label { display: grid; gap: 6px; font-weight: 700; }
+  .feedback .hint { font-weight: 400; color: var(--ink-soft); }
+  .feedback input, .feedback textarea {
+    font: inherit; color: var(--ink); background: #fff; width: 100%;
+    border: 2px solid #d5e3f2; border-radius: var(--radius-small); padding: 12px 14px;
+  }
+  .feedback textarea { min-height: 140px; resize: vertical; }
+  .feedback input:focus-visible, .feedback textarea:focus-visible { outline: 3px solid var(--bubble); outline-offset: 2px; border-color: var(--bubble); }
+  .feedback .btn-send { background: var(--bubble); color: #fff; box-shadow: 0 5px 0 #c4326a; cursor: pointer; justify-self: start; }
+  .feedback .btn-send:active { transform: translateY(3px); box-shadow: 0 2px 0 #c4326a; }
+  .feedback .btn-send[disabled] { opacity: .6; cursor: wait; }
+  .feedback .botcheck { position: absolute; left: -9999px; }
+  .feedback .status { min-height: 1.6em; font-weight: 700; }
+  .feedback .status.ok { color: #1f8a57; }
+  .feedback .status.err { color: #c4322f; }
+
   footer { background: var(--ink); color: #dfe6ff; padding: 40px 0 48px; font-size: .95rem; }
   footer a { color: #fff; }
   footer .row { display: flex; flex-wrap: wrap; gap: 8px 22px; }
@@ -166,6 +184,7 @@
         <a href="#watch">Watch</a>
         <a href="#follow">Follow</a>
         <a href="#parents">Viewers</a>
+        <a href="#feedback">Feedback</a>
       </nav>
     </div>
 
@@ -242,8 +261,29 @@
           <li>Happy endings only: when a rhyme has a fall or a fright, we add a kind verse so it ends well.</li>
           <li>The songs, voices and 3D animation are made with AI tools by a small independent creator.</li>
         </ul>
-        <p style="margin-top:16px">Questions or ideas for a song? Reach us through the <a href="https://www.youtube.com/channel/UCHuJk_CXAflfAHFsubz87yA/about">About page of our YouTube channel</a>.</p>
+        <p style="margin-top:16px">Have an idea for a song? <a href="#feedback">Tell us in the feedback form</a>.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="feedback" class="feedback">
+    <div class="wrap">
+      <h2>Feedback &amp; ideas</h2>
+      <p class="section-lede">Got an idea for a song or a rhyme you would like to hear? Send it here. We read every message, but we can not reply to them.</p>
+      <form id="fbForm" novalidate>
+        <input type="hidden" name="access_key" value="5b3ec54d-f2e6-4456-9ddd-a6e7656b6c35">
+        <input type="hidden" name="subject" value="Nursery Rhymes World Z: feedback or song idea">
+        <input type="hidden" name="from_name" value="NurseryRhymesWorldZ website">
+        <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label>Your idea or feedback
+          <textarea name="message" required maxlength="2000"></textarea>
+        </label>
+        <label>Your name <span class="hint">(optional)</span>
+          <input type="text" name="name" maxlength="60" autocomplete="given-name">
+        </label>
+        <button class="btn btn-send" type="submit">Send</button>
+        <p class="status" id="fbStatus" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 </main>
@@ -253,7 +293,7 @@
     <div class="row">
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
-      <a href="https://www.youtube.com/channel/UCHuJk_CXAflfAHFsubz87yA/about">Contact</a>
+      <a href="#feedback">Feedback &amp; ideas</a>
     </div>
     <p class="api">Our uploader app is a private tool used only by the channel owner to upload the owner’s own videos to the @NurseryRhymesWorldZ YouTube channel. It uses YouTube API Services. By using YouTube you agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. Google’s data practices are described in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
     <p>© 2026 Nursery Rhymes World Z</p>
@@ -281,6 +321,31 @@
       : `<span class="soon">${svg}<span>${s.name}<small>Coming soon</small></span></span>`;
     ul.appendChild(li);
   }
+</script>
+
+<script>
+  const fbForm = document.getElementById("fbForm");
+  const fbStatus = document.getElementById("fbStatus");
+  fbForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const msg = fbForm.message.value.trim();
+    if (!msg) { fbStatus.className = "status err"; fbStatus.textContent = "Please write your idea or feedback first."; fbForm.message.focus(); return; }
+    const btn = fbForm.querySelector("button");
+    btn.disabled = true; fbStatus.className = "status"; fbStatus.textContent = "Sending…";
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(fbForm)))
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "failed");
+      fbForm.reset();
+      fbStatus.className = "status ok"; fbStatus.textContent = "Thank you! Your message was sent.";
+    } catch (err) {
+      fbStatus.className = "status err"; fbStatus.textContent = "Sorry, your message was not sent. Please try again in a moment.";
+    } finally { btn.disabled = false; }
+  });
 </script>
 </body>
 </html>
