@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nursery Rhymes World Z</title>
+<meta name="description" content="3D sing-along nursery rhymes for toddlers and preschoolers (ages 2–6). A new song every day with Alayna, Hamad and friends on YouTube.">
+<meta property="og:title" content="Nursery Rhymes World Z">
+<meta property="og:description" content="3D sing-along nursery rhymes for ages 2–6. A new song every day.">
+<meta property="og:image" content="https://nurseryrhymesworldz.com/hero.webp">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #22306b;
+    --ink-soft: #4a5688;
+    --sky: #cdeeff;
+    --sky-deep: #9fd8f7;
+    --butter: #ffc93c;
+    --bubble: #ff5d8f;
+    --meadow: #3fb67a;
+    --page: #ffffff;
+    --card: #f2f9ff;
+    --yt: #ff0033;
+    --radius-big: 28px;
+    --radius-small: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--ink); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--bubble); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: "Fredoka", system-ui, sans-serif; line-height: 1.1; margin: 0; }
+  h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 600; }
+  p { margin: 0; }
+
+  /* ---------- hero: the toy-block wordmark ---------- */
+  .hero {
+    background:
+      radial-gradient(120% 70% at 50% 108%, #8fd6a3 0 38%, transparent 38.3%),
+      linear-gradient(var(--sky), #e9f7ff 70%);
+    padding: 28px 0 96px;
+    overflow: hidden;
+  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 1.05rem "Fredoka", sans-serif; }
+  .brand img { width: 44px; height: 44px; border-radius: 50%; border: 3px solid #fff; }
+  .topbar nav { display: flex; gap: 18px; font-weight: 700; }
+  .topbar nav a { text-decoration: none; }
+  .topbar nav a:hover { text-decoration: underline; }
+
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; margin-top: 48px; }
+  .wordmark { font-weight: 700; }
+  .wordmark .line1 { display: block; font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -0.5px; }
+  .blocks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .blocks span {
+    width: clamp(48px, 7.2vw, 74px); aspect-ratio: 1;
+    display: grid; place-items: center;
+    font-size: clamp(1.8rem, 4.6vw, 3rem); color: #fff;
+    border-radius: 14px;
+    box-shadow: inset 0 -7px 0 rgba(0,0,0,.16), 0 6px 0 rgba(34,48,107,.18);
+    text-shadow: 0 2px 0 rgba(0,0,0,.18);
+    transform: rotate(var(--tilt));
+  }
+  .blocks .gap { width: 10px; background: none; box-shadow: none; }
+  .b1 { background: var(--bubble); --tilt: -6deg; }
+  .b2 { background: #3a8ee6; --tilt: 4deg; }
+  .b3 { background: var(--meadow); --tilt: -3deg; }
+  .b4 { background: var(--butter); --tilt: 5deg; color: var(--ink) !important; text-shadow: none !important; }
+  .b5 { background: #8a63d2; --tilt: -5deg; }
+  .b6 { background: var(--bubble); --tilt: 7deg; }
+  @media (prefers-reduced-motion: no-preference) {
+    .blocks span { animation: drop .7s cubic-bezier(.3,1.5,.5,1) both; }
+    .blocks span:nth-child(2) { animation-delay: .08s; } .blocks span:nth-child(3) { animation-delay: .16s; }
+    .blocks span:nth-child(4) { animation-delay: .24s; } .blocks span:nth-child(5) { animation-delay: .32s; }
+    .blocks span:nth-child(7) { animation-delay: .44s; }
+    @keyframes drop { from { transform: translateY(-120px) rotate(0); opacity: 0; } }
+  }
+  .lede { margin-top: 26px; font-size: 1.2rem; max-width: 34ch; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px; border-radius: 999px; text-decoration: none;
+    font: 600 1.08rem "Fredoka", sans-serif; border: 0;
+  }
+  .btn-yt { background: var(--yt); color: #fff; box-shadow: 0 5px 0 #b30024; }
+  .btn-yt:hover { transform: translateY(-1px); }
+  .btn-yt:active { transform: translateY(3px); box-shadow: 0 2px 0 #b30024; }
+  .btn-ghost { background: #fff; color: var(--ink); box-shadow: 0 5px 0 var(--sky-deep); }
+  .btn-fb { background: #1877f2; color: #fff; box-shadow: 0 5px 0 #0f4fa8; }
+  .btn-ig { background: linear-gradient(45deg, #f58529, #dd2a7b 55%, #8134af); color: #fff; box-shadow: 0 5px 0 #8a1f5c; }
+  .btn-tt { background: #000; color: #fff; box-shadow: 0 5px 0 #ff0050; }
+  .btn-wa { background: #25d366; color: #fff; box-shadow: 0 5px 0 #128c4b; }
+  .btn-fb:active, .btn-ig:active, .btn-tt:active, .btn-wa:active { transform: translateY(3px); }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .btn-lab { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+  .btn-lab small { font-size: .74em; font-weight: 500; opacity: .85; letter-spacing: 0; }
+
+  .screen {
+    position: relative; background: var(--ink); padding: 12px; border-radius: var(--radius-big);
+    box-shadow: 0 14px 0 rgba(34,48,107,.18);
+    transform: rotate(1.5deg);
+  }
+  .screen img { border-radius: 18px; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+  .screen .tag {
+    position: absolute; left: -14px; bottom: 26px; background: var(--butter); color: var(--ink);
+    font: 600 1rem "Fredoka", sans-serif; padding: 8px 16px; border-radius: 12px; transform: rotate(-4deg);
+  }
+
+  /* ---------- sections ---------- */
+  section { padding: 72px 0; }
+  .split { display: grid; grid-template-columns: 1fr 1.35fr; gap: 40px; align-items: start; }
+  .split p + p { margin-top: 12px; }
+  .section-lede { margin-top: 12px; max-width: 46ch; color: var(--ink-soft); }
+  .player { aspect-ratio: 16/9; width: 100%; border: 0; border-radius: var(--radius-big); background: var(--ink); }
+  .when { margin-top: 20px; display: inline-block; background: var(--card); border-radius: var(--radius-small); padding: 12px 16px; font-weight: 700; }
+
+  .follow { background: var(--card); }
+  .socials { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .socials a, .socials .soon {
+    display: flex; align-items: center; gap: 12px; padding: 16px; border-radius: var(--radius-small);
+    background: #fff; text-decoration: none; font-weight: 700; min-height: 72px;
+  }
+  .socials a { box-shadow: 0 4px 0 var(--sky-deep); }
+  .socials a:hover { box-shadow: 0 4px 0 var(--bubble); }
+  .socials .soon { color: #8a93b8; background: #fbfdff; border: 2px dashed #d5e3f2; }
+  .socials svg { width: 30px; height: 30px; flex: none; }
+  .socials small { display: block; font-weight: 400; font-size: .86rem; color: var(--ink-soft); }
+
+  .lists { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .lists a {
+    padding: 10px 16px; border-radius: 999px; text-decoration: none; font-weight: 700;
+    background: var(--card); border: 2px solid #d8ebfb;
+  }
+  .lists a:hover { border-color: var(--bubble); }
+
+  .parents ul { margin: 16px 0 0; padding-left: 1.2em; }
+  .parents li + li { margin-top: 8px; }
+  .family-pic { display: block; margin-top: 24px; width: 100%; height: auto; border-radius: var(--radius-big); }
+  .parents .pic { border-radius: var(--radius-big); width: 100%; height: auto; }
+
+  .feedback { background: var(--card); }
+  .feedback form { margin-top: 24px; max-width: 560px; display: grid; gap: 14px; }
+  .feedback label { display: grid; gap: 6px; font-weight: 700; }
+  .feedback .hint { font-weight: 400; color: var(--ink-soft); }
+  .feedback input, .feedback textarea {
+    font: inherit; color: var(--ink); background: #fff; width: 100%;
+    border: 2px solid #d5e3f2; border-radius: var(--radius-small); padding: 12px 14px;
+  }
+  .feedback textarea { min-height: 140px; resize: vertical; }
+  .feedback input:focus-visible, .feedback textarea:focus-visible { outline: 3px solid var(--bubble); outline-offset: 2px; border-color: var(--bubble); }
+  .feedback .btn-send { background: var(--bubble); color: #fff; box-shadow: 0 5px 0 #c4326a; cursor: pointer; justify-self: start; }
+  .feedback .btn-send:active { transform: translateY(3px); box-shadow: 0 2px 0 #c4326a; }
+  .feedback .btn-send[disabled] { opacity: .6; cursor: wait; }
+  .feedback .botcheck { position: absolute; left: -9999px; }
+  .feedback .status { min-height: 1.6em; font-weight: 700; }
+  .feedback .status.ok { color: #1f8a57; }
+  .feedback .status.err { color: #c4322f; }
+
+  footer { background: var(--ink); color: #dfe6ff; padding: 40px 0 48px; font-size: .95rem; }
+  footer a { color: #fff; }
+  footer .row { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  footer p + p, footer .row + p { margin-top: 12px; }
+  footer .api { color: #b9c3ec; max-width: 70ch; }
+
+  @media (max-width: 860px) {
+    .hero-grid, .split { grid-template-columns: 1fr; }
+    .socials { grid-template-columns: repeat(2, 1fr); }
+    .topbar nav { display: none; }
+    .screen { transform: none; }
+    .hero { background: linear-gradient(var(--sky), #e9f7ff); padding-bottom: 56px; }
+  }
+  @media (max-width: 420px) { .socials { grid-template-columns: 1fr; } }
+
+/* NRWZ visual refresh — presentation only; original copy, links, form and scripts retained */
+:root {
+  --ink:#172b57; --ink-soft:#526486; --sky:#dff4ff; --sky-deep:#a9def8;
+  --butter:#ffd45c; --bubble:#ff648e; --meadow:#42b982; --page:#fffdf8;
+  --card:#f2f8ff; --yt:#ff0033; --radius-big:30px; --radius-small:18px;
+}
+html { scroll-padding-top:24px; }
+body { background:var(--page); color:var(--ink); line-height:1.65; }
+.wrap { max-width:1160px; padding-left:clamp(20px,4vw,42px); padding-right:clamp(20px,4vw,42px); }
+h2 { letter-spacing:-.025em; font-size:clamp(2rem,4vw,2.8rem); }
+.hero {
+  position:relative; isolation:isolate; padding:24px 0 90px;
+  background:radial-gradient(ellipse at 78% 15%,rgba(255,255,255,.9) 0 7%,transparent 7.5%),
+  radial-gradient(ellipse at 12% 86%,rgba(255,255,255,.65) 0 8%,transparent 8.5%),
+  linear-gradient(135deg,#d8f2ff 0%,#eaf8ff 48%,#fff1d8 100%);
+}
+.hero:after { content:""; position:absolute; z-index:-1; left:-5%; right:-5%; bottom:-2px; height:62px; background:#bce8ce; border-radius:50% 50% 0 0/55% 55% 0 0; }
+.topbar { max-width:1160px; margin:auto; padding:0 clamp(20px,4vw,42px); }
+.brand { font-size:1.12rem; gap:12px; color:var(--ink); }
+.brand img { width:50px; height:50px; box-shadow:0 5px 14px rgba(23,43,87,.12); }
+.topbar nav { gap:8px; padding:7px; border:1px solid rgba(255,255,255,.85); background:rgba(255,255,255,.62); border-radius:999px; backdrop-filter:blur(12px); }
+.topbar nav a { padding:9px 15px; border-radius:999px; font-size:.95rem; transition:background .2s,transform .2s; }
+.topbar nav a:hover { background:#fff; text-decoration:none; transform:translateY(-1px); }
+.hero-grid { max-width:1160px; margin:clamp(48px,7vw,82px) auto 0; padding:0 clamp(20px,4vw,42px); gap:clamp(34px,6vw,76px); }
+.wordmark .line1 { font-size:clamp(2.7rem,6vw,5rem); letter-spacing:-.045em; line-height:1.02; }
+.blocks { gap:9px; margin-top:20px; }
+.blocks span { border-radius:18px; box-shadow:inset 0 -6px 0 rgba(0,0,0,.12),0 8px 18px rgba(23,43,87,.12); }
+.lede { max-width:39ch; margin-top:30px; font-size:clamp(1.12rem,2vw,1.3rem); color:#35496e; }
+.cta-row { gap:13px; margin-top:30px; }
+.btn { padding:14px 20px; border-radius:17px; box-shadow:0 5px 0 rgba(23,43,87,.16); transition:transform .18s,box-shadow .18s,filter .18s; }
+.btn:hover { transform:translateY(-3px); filter:saturate(1.08); }
+.btn:active { transform:translateY(1px); box-shadow:0 2px 0 rgba(23,43,87,.16); }
+.btn-yt { box-shadow:0 5px 0 #b30024,0 10px 22px rgba(255,0,51,.16); }
+.btn-ghost { box-shadow:0 5px 0 var(--sky-deep); }
+.screen { padding:13px; border:5px solid rgba(255,255,255,.8); border-radius:34px; box-shadow:0 22px 50px rgba(23,43,87,.2); transform:rotate(1deg); }
+.screen img { border-radius:23px; }
+.screen .tag { left:-22px; bottom:30px; padding:11px 18px; border-radius:14px; box-shadow:0 7px 18px rgba(23,43,87,.14); }
+section { padding:clamp(64px,8vw,100px) 0; }
+section:nth-child(even) { background:rgba(232,245,255,.38); }
+.split { gap:clamp(30px,5vw,64px); align-items:center; }
+.section-lede { font-size:1.08rem; line-height:1.7; color:var(--ink-soft); }
+.player { border:8px solid #fff; border-radius:28px; box-shadow:0 16px 42px rgba(23,43,87,.13); }
+.when { border:1px solid #dcecff; box-shadow:0 5px 0 #dcecff; }
+#family { background:linear-gradient(180deg,#fffdf8,#f2faff); }
+.family-pic { border:9px solid #fff; border-radius:32px; box-shadow:0 18px 42px rgba(23,43,87,.12); }
+.lists { gap:12px; margin-top:30px; }
+.lists a { padding:13px 18px; border:1px solid #dce9f8; background:#fff; box-shadow:0 4px 0 #e4eff9; transition:transform .18s,box-shadow .18s,border-color .18s; }
+.lists a:hover { transform:translateY(-3px); border-color:var(--bubble); box-shadow:0 7px 0 #f7d8e3; }
+.parents .pic { border:8px solid #fff; box-shadow:0 16px 38px rgba(23,43,87,.12); }
+.parents ul { line-height:1.75; }
+.parents li::marker { color:var(--bubble); }
+.feedback { background:linear-gradient(135deg,#edf8ff,#fff5e5); }
+.feedback form { max-width:650px; padding:clamp(20px,4vw,34px); margin-top:28px; background:#fff; border:1px solid #e3edf8; border-radius:26px; box-shadow:0 16px 42px rgba(23,43,87,.09); }
+.feedback input,.feedback textarea { border:1.5px solid #d8e5f3; border-radius:14px; transition:border-color .2s,box-shadow .2s; }
+.feedback input:focus-visible,.feedback textarea:focus-visible { box-shadow:0 0 0 4px rgba(255,100,142,.13); }
+.feedback .btn-send { border-radius:14px; padding:13px 28px; }
+footer { padding:48px 0 54px; background:#172b57; }
+footer .row { gap:12px 24px; margin-bottom:18px; }
+footer .row a { text-decoration:none; text-underline-offset:4px; }
+footer .row a:hover { text-decoration:underline; }
+footer .api { line-height:1.7; }
+@media(max-width:860px) {
+  .hero { padding-bottom:70px; }
+  .hero-grid { margin-top:44px; }
+  .topbar nav { display:flex; gap:2px; }
+  .topbar nav a { padding:8px 10px; font-size:.88rem; }
+  .split { align-items:start; }
+  .screen { max-width:720px; margin:0 auto; }
+}
+@media(max-width:560px) {
+  .hero { padding-top:16px; }
+  .topbar { align-items:flex-start; flex-direction:column; gap:14px; }
+  .topbar nav { width:100%; justify-content:space-between; }
+  .topbar nav a { padding:8px 12px; }
+  .hero-grid { margin-top:34px; }
+  .wordmark .line1 { font-size:clamp(2.45rem,11vw,3.5rem); }
+  .blocks { gap:6px; }
+  .blocks span { border-radius:13px; }
+  .cta-row { display:grid; grid-template-columns:1fr; }
+  .cta-row .btn { width:100%; justify-content:center; }
+  .screen { padding:8px; border-radius:23px; }
+  .screen img { border-radius:16px; }
+  .screen .tag { left:-5px; bottom:16px; font-size:.86rem; }
+  .socials { grid-template-columns:1fr; }
+  section { padding:62px 0; }
+  .family-pic { border-width:5px; border-radius:22px; }
+  .feedback form { padding:20px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="#top" id="top"><img src="logo.webp" alt="" width="44" height="44">Nursery Rhymes World Z</a>
+      <nav aria-label="Sections">
+        <a href="#watch">Watch</a>
+        <a href="#parents">Viewers</a>
+        <a href="#feedback">Feedback</a>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="wordmark">
+          <span class="line1">Nursery Rhymes</span>
+          <span class="blocks" aria-label="World Z">
+            <span class="b1" aria-hidden="true">W</span><span class="b2" aria-hidden="true">o</span><span class="b3" aria-hidden="true">r</span><span class="b4" aria-hidden="true">l</span><span class="b5" aria-hidden="true">d</span><span class="gap" aria-hidden="true"></span><span class="b6" aria-hidden="true">Z</span>
+          </span>
+        </h1>
+        <p class="lede">3D sing-along nursery rhymes for little ones aged 2–6. Sing with Hamad, Alayna and friends. There’s a new song every day.</p>
+        <div class="cta-row">
+          <a class="btn btn-yt" data-link="subscribe" href="https://www.youtube.com/channel/UCHuJk_CXAflfAHFsubz87yA?sub_confirmation=1" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.8 15.1V8.9l5.8 3.1-5.8 3.1Z"/></svg>
+            <span class="btn-lab">Subscribe on YouTube<small>@NurseryRhymesWorldZ</small></span>
+          </a>
+        <a class="btn btn-fb" href="https://www.facebook.com/nurseryrhymesworldz" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.3 21v-7.5h2.5l.4-2.9h-2.9V8.7c0-.8.2-1.4 1.4-1.4h1.6V4.7a20 20 0 0 0-2.3-.1c-2.3 0-3.8 1.4-3.8 3.9v2.1H7.7v2.9h2.5V21Z"/></svg> <span class="btn-lab">Follow on Facebook<small>@nurseryrhymesworldz</small></span></a>
+        <a class="btn btn-ig" href="https://www.instagram.com/nurseryrhymesworldz/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg> <span class="btn-lab">Follow on Instagram<small>@nurseryrhymesworldz</small></span></a>
+        <a class="btn btn-tt" href="https://www.tiktok.com/@nurseryrhymesworldz" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 3h-3.1v12.1a2.7 2.7 0 1 1-2.7-2.7c.3 0 .6 0 .8.1V9.3a5.9 5.9 0 1 0 5 5.8V8.9a7.6 7.6 0 0 0 4.4 1.4V7.2A4.4 4.4 0 0 1 16.6 3Z"/></svg> <span class="btn-lab">Follow on TikTok<small>@nurseryrhymesworldz</small></span></a>
+        <a class="btn btn-wa" href="https://whatsapp.com/channel/0029VbECNArDjiOZgkcerT3m" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.2 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.2-.2-.2-.4-.3z"/></svg> <span class="btn-lab">Follow on WhatsApp<small>Nursery Rhymes World Z channel</small></span></a>
+        </div>
+      </div>
+      <div class="screen">
+        <img src="hero.webp?v=ah3" alt="Alayna and her big brother Hamad playing with Humpty Dumpty, toy horses and soldiers on a green hill" width="1000" height="562">
+        <span class="tag">Hamad &amp; Alayna with Humpty Dumpty</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="watch">
+    <div class="wrap split">
+      <div>
+        <h2>Watch the newest songs</h2>
+        <p class="section-lede">Every song comes as a full sing-along video with the words on screen, plus a short version for Shorts.</p>
+      </div>
+      <iframe class="player" src="https://www.youtube-nocookie.com/embed/videoseries?list=UUHuJk_CXAflfAHFsubz87yA" title="Newest Nursery Rhymes World Z videos" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </section>
+
+
+  <section id="family">
+    <div class="wrap">
+      <h2>Meet the family</h2>
+      <p class="section-lede">Hamad and Alayna sing along with Baba, Mama, Dada, Dadi, their bus driver and four friends.</p>
+      <img class="family-pic" src="banner.webp?v=b1" alt="Nursery Rhymes World Z banner: Hamad and Alayna with Baba, Mama, Dada, Dadi, the bus driver and four friends under a rainbow, with the bus and playground" width="1600" height="900" loading="lazy">
+    </div>
+  </section>
+
+  <section id="playlists">
+    <div class="wrap">
+      <h2>Playlists</h2>
+      <p class="section-lede">Learning videos grouped by topic, for longer watching.</p>
+      <div class="lists">
+        <a href="https://www.youtube.com/playlist?list=PLdNgpsJjLLjE" target="_blank" rel="noopener">Alayna &amp; Hamad Muslims: Islamic Songs for Kids</a>
+        <a href="https://www.youtube.com/playlist?list=PLSb4Iotwhxkw" target="_blank" rel="noopener">Nursery Rhymes for Toddlers</a>
+        <a href="https://www.youtube.com/playlist?list=PLXAbzaKV7AzE" target="_blank" rel="noopener">Alayna &amp; Hamad Visit the Doctor</a>
+        <a href="https://www.youtube.com/playlist?list=PLThDsf-W7SJI" target="_blank" rel="noopener">Alayna &amp; Hamad Visit: Fun Places</a>
+        <a href="https://www.youtube.com/playlist?list=PLRE6cssGmdSE" target="_blank" rel="noopener">Numbers &amp; Counting</a>
+        <a href="https://www.youtube.com/playlist?list=PLaAxwqudwCM0" target="_blank" rel="noopener">Colors &amp; Shapes</a>
+        <a href="https://www.youtube.com/playlist?list=PLB2of3MwPX0Q" target="_blank" rel="noopener">Animals &amp; Dinosaurs</a>
+        <a href="https://www.youtube.com/playlist?list=PLTukgkkI3zkk" target="_blank" rel="noopener">Vehicles</a>
+        <a href="https://www.youtube.com/playlist?list=PLSg-TJLNgQKI" target="_blank" rel="noopener">Sight Words</a>
+        <a href="https://www.youtube.com/playlist?list=PLJLVN_XfDlKw" target="_blank" rel="noopener">Surprise Eggs: Guess the Sound</a>
+        <a href="https://www.youtube.com/playlist?list=PLRxDwLFIwy9A" target="_blank" rel="noopener">Christmas &amp; Holiday Words</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="parents" class="parents">
+    <div class="wrap split">
+      <img class="pic" src="bus.webp?v=ah2" alt="Alayna and Hamad waving from the smiling yellow bus at a playground" width="630" height="320" loading="lazy">
+      <div>
+        <h2>Viewers</h2>
+        <p class="section-lede">Short, cheerful songs that help toddlers and preschoolers learn English through singing.</p>
+        <ul>
+          <li>Classic nursery rhymes, plus our own songs about brushing teeth, washing hands, colors and counting.</li>
+          <li>Words stay on screen so children can follow along and start to recognise them.</li>
+          <li>Every video is marked “Made for kids” on YouTube, so comments are off and ads are not personalised.</li>
+          <li>Happy endings only: when a rhyme has a fall or a fright, we add a kind verse so it ends well.</li>
+          <li>The songs, voices and 3D animation are made with AI tools by a small independent creator.</li>
+        </ul>
+        <p style="margin-top:16px">Have an idea for a song? <a href="#feedback">Tell us in the feedback form</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="feedback" class="feedback">
+    <div class="wrap">
+      <h2>Feedback &amp; ideas</h2>
+      <p class="section-lede">Got an idea for a song or a rhyme you would like to hear? Send it here. We read every message, but we can not reply to them.</p>
+      <form id="fbForm" novalidate>
+        <input type="hidden" name="access_key" value="5b3ec54d-f2e6-4456-9ddd-a6e7656b6c35">
+        <input type="hidden" name="subject" value="Nursery Rhymes World Z: feedback or song idea">
+        <input type="hidden" name="from_name" value="NurseryRhymesWorldZ website">
+        <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label>Your idea or feedback
+          <textarea name="message" required maxlength="2000"></textarea>
+        </label>
+        <label>Your name <span class="hint">(optional)</span>
+          <input type="text" name="name" maxlength="60" autocomplete="given-name">
+        </label>
+        <button class="btn btn-send" type="submit">Send</button>
+        <p class="status" id="fbStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="#feedback">Feedback &amp; ideas</a>
+    </div>
+    <p class="api">Our uploader app is a private tool used only by the channel owner to upload the owner’s own videos to the @NurseryRhymesWorldZ YouTube channel. It uses YouTube API Services. By using YouTube you agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. Google’s data practices are described in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+    <p>© 2026 Nursery Rhymes World Z</p>
+  </div>
+</footer>
+
+
+<script>
+  const fbForm = document.getElementById("fbForm");
+  const fbStatus = document.getElementById("fbStatus");
+  fbForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const msg = fbForm.message.value.trim();
+    if (!msg) { fbStatus.className = "status err"; fbStatus.textContent = "Please write your idea or feedback first."; fbForm.message.focus(); return; }
+    const btn = fbForm.querySelector("button");
+    btn.disabled = true; fbStatus.className = "status"; fbStatus.textContent = "Sending…";
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(fbForm)))
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "failed");
+      fbForm.reset();
+      fbStatus.className = "status ok"; fbStatus.textContent = "Thank you! Your message was sent.";
+    } catch (err) {
+      fbStatus.className = "status err"; fbStatus.textContent = "Sorry, your message was not sent. Please try again in a moment.";
+    } finally { btn.disabled = false; }
+  });
+</script>
+</body>
+</html>
