@@ -502,6 +502,52 @@ footer .api { color:#b8c5e8; }
   *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
 }
 
+
+/* NRWZ compact spacing pass — preserve content and all existing behaviour */
+.hero { padding:18px 0 54px; }
+.hero-grid { margin-top:34px; gap:clamp(24px,3.5vw,46px); }
+.wordmark .line1 { font-size:clamp(2.55rem,5.4vw,4.45rem); }
+.blocks { margin-top:13px; gap:7px; }
+.lede { margin-top:19px; font-size:clamp(1.05rem,1.6vw,1.18rem); }
+.cta-row { gap:9px; margin-top:20px; }
+.btn { padding:11px 15px; font-size:1rem; border-radius:14px; }
+.btn svg { width:20px; height:20px; }
+.screen { padding:10px; border-radius:27px; }
+.screen img { border-radius:19px; }
+.screen .tag { bottom:22px; padding:9px 14px; font-size:.92rem; }
+section { padding:clamp(38px,4.5vw,58px) 0; }
+.split { gap:clamp(22px,3.5vw,42px); }
+.section-lede { margin-top:8px; font-size:1rem; line-height:1.55; }
+.player { border-width:6px; border-radius:22px; }
+.family-pic { margin-top:17px; border-width:6px; border-radius:25px; }
+.lists { margin-top:19px; gap:9px; }
+.lists a { padding:10px 14px; font-size:.96rem; }
+.parents ul { margin-top:10px; line-height:1.55; }
+.parents li + li { margin-top:5px; }
+.parents .pic { border-width:6px; border-radius:25px; }
+.feedback form { margin-top:18px; padding:22px; gap:11px; }
+.feedback textarea { min-height:112px; }
+footer { padding:32px 0 36px; }
+footer .row { margin-bottom:12px; }
+@media(max-width:860px) {
+  .hero { padding-bottom:44px; }
+  .hero-grid { margin-top:28px; }
+  section { padding:38px 0; }
+  .split { gap:20px; }
+}
+@media(max-width:560px) {
+  .hero { padding-top:14px; padding-bottom:38px; }
+  .hero-grid { margin-top:24px; }
+  .lede { margin-top:16px; }
+  .cta-row { margin-top:17px; gap:8px; }
+  .btn { padding:10px 13px; }
+  section { padding:34px 0; }
+  .family-pic { margin-top:14px; border-width:5px; }
+  .lists { gap:8px; margin-top:16px; }
+  .lists a { padding:9px 12px; }
+  .feedback form { padding:17px; }
+}
+
 </style>
 </head>
 <body>
