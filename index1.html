@@ -647,7 +647,12 @@ section { padding:clamp(44px,5.5vw,70px) 0; }
 
 /* Final mobile edge-spacing adjustment */
 @media(max-width:560px) {
-  .wrap,.topbar,.hero-grid { width:calc(100% - 12px); }
+  .wrap,.topbar,.hero-grid {
+    width:100%;
+    max-width:none;
+    padding-left:8px;
+    padding-right:8px;
+  }
 }
 </style>
 </head>
