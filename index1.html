@@ -644,6 +644,11 @@ section { padding:clamp(44px,5.5vw,70px) 0; }
   .lists { grid-template-columns:1fr; }
 }
 
+
+/* Final mobile edge-spacing adjustment */
+@media(max-width:560px) {
+  .wrap,.topbar,.hero-grid { width:calc(100% - 20px); }
+}
 </style>
 </head>
 <body>
