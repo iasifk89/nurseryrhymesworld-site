@@ -143,12 +143,12 @@
   }
   .lists a:hover { border-color: var(--bubble); }
 
-  .friends { background: var(--card); }
-  .friends-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; margin-top: 28px; }
-  .friend { background: #fff; border-radius: var(--radius-small); overflow: hidden; box-shadow: 0 5px 0 var(--sky-deep); margin: 0; }
-  .friend img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
-  .friend figcaption { padding: 12px 16px 14px; font: 600 1.15rem "Fredoka", sans-serif; }
-  .friend figcaption small { display: block; font: 400 .92rem "Atkinson Hyperlegible", system-ui, sans-serif; color: var(--ink-soft); }
+  .cast { background: var(--card); }
+  .cast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; margin-top: 28px; }
+  .person { background: #fff; border-radius: var(--radius-small); overflow: hidden; box-shadow: 0 5px 0 var(--sky-deep); margin: 0; }
+  .person img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 15%; background: #eef3f8; }
+  .person figcaption { padding: 10px 14px 12px; font: 600 1.1rem "Fredoka", sans-serif; }
+  .person small { display: block; font: 400 .9rem "Atkinson Hyperlegible", system-ui, sans-serif; color: var(--ink-soft); }
   .parents ul { margin: 16px 0 0; padding-left: 1.2em; }
   .parents li + li { margin-top: 8px; }
   .family-pic { display: block; margin-top: 24px; width: 100%; height: auto; border-radius: var(--radius-big); }
@@ -196,7 +196,7 @@
       <a class="brand" href="#top" id="top"><img src="logo.webp" alt="" width="44" height="44">Nursery Rhymes World Z</a>
       <nav aria-label="Sections">
         <a href="#watch">Watch</a>
-        <a href="#friends">Friends</a>
+        <a href="#cast">Cast</a>
         <a href="#parents">Viewers</a>
         <a href="#feedback">Feedback</a>
       </nav>
@@ -250,17 +250,25 @@
     </div>
   </section>
 
-  <section id="friends" class="friends">
+
+  <section id="cast" class="cast">
     <div class="wrap">
-      <h2>Meet Nani, Nana and the friends</h2>
-      <p class="section-lede">More grandparents and friends who sing along on the bus and in the playground.</p>
-      <div class="friends-grid">
-        <figure class="friend"><img src="friends/nani.webp?v=n1" alt="Nani, a kind grandmother with grey hair in a mustard kurta and teal dupatta" width="900" height="502" loading="lazy"><figcaption>Nani<small>Grandmother</small></figcaption></figure>
-        <figure class="friend"><img src="friends/nana.webp?v=n1" alt="Nana, a kind grandfather with grey hair, glasses, a navy vest and cream kurta" width="900" height="502" loading="lazy"><figcaption>Nana<small>Grandfather</small></figcaption></figure>
-        <figure class="friend"><img src="friends/zoya.webp?v=n1" alt="Zoya, a happy girl with braids and a yellow dress, holding a butterfly" width="900" height="502" loading="lazy"><figcaption>Zoya<small>Friend</small></figcaption></figure>
-        <figure class="friend"><img src="friends/bilal.webp?v=n1" alt="Bilal, a boy with curly brown hair in an orange polo shirt, holding a red ball" width="900" height="502" loading="lazy"><figcaption>Bilal<small>Friend</small></figcaption></figure>
-        <figure class="friend"><img src="friends/sara.webp?v=n1" alt="Sara, a girl in a pink tunic and white hijab, waving" width="900" height="502" loading="lazy"><figcaption>Sara<small>Friend</small></figcaption></figure>
-        <figure class="friend"><img src="friends/zain.webp?v=n1" alt="Zain, a boy with spiky black hair in a green shirt and denim overalls" width="900" height="502" loading="lazy"><figcaption>Zain<small>Friend</small></figcaption></figure>
+      <h2>Meet everyone</h2>
+      <p class="section-lede">Hamad, Alayna, their family, the bus driver and their friends.</p>
+      <div class="cast-grid">
+        <figure class="person"><img src="people/hamad.webp?v=c1" alt="Boy in a red and white striped T-shirt and denim shorts" width="260" height="700" loading="lazy"><figcaption>Hamad<small>Big brother, 4</small></figcaption></figure>
+        <figure class="person"><img src="people/alayna.webp?v=c1" alt="Girl in a pink floral dress with pigtails and yellow bows" width="260" height="700" loading="lazy"><figcaption>Alayna<small>Little sister, 2</small></figcaption></figure>
+        <figure class="person"><img src="people/baba.webp?v=c1" alt="Man in a light-blue shirt and beige trousers" width="260" height="700" loading="lazy"><figcaption>Baba<small>Dad</small></figcaption></figure>
+        <figure class="person"><img src="people/mama.webp?v=c1" alt="Woman in a teal salwar kameez with a dupatta" width="260" height="700" loading="lazy"><figcaption>Mama<small>Mom</small></figcaption></figure>
+        <figure class="person"><img src="people/dada.webp?v=c1" alt="Old man with a white beard in a grey waistcoat and white kurta" width="260" height="700" loading="lazy"><figcaption>Dada<small>Grandfather</small></figcaption></figure>
+        <figure class="person"><img src="people/dadi.webp?v=c1" alt="Grandmother with grey hair in a lilac kameez" width="260" height="700" loading="lazy"><figcaption>Dadi<small>Grandmother</small></figcaption></figure>
+        <figure class="person"><img src="people/nana.webp?v=c1" alt="Grandfather with grey hair, glasses, a navy vest and cream kurta" width="260" height="700" loading="lazy"><figcaption>Nana<small>Grandfather</small></figcaption></figure>
+        <figure class="person"><img src="people/nani.webp?v=c1" alt="Grandmother with grey hair in a mustard kurta and teal dupatta" width="260" height="700" loading="lazy"><figcaption>Nani<small>Grandmother</small></figcaption></figure>
+        <figure class="person"><img src="people/driver.webp?v=c1" alt="Bus driver in a white shirt, black tie and cap" width="260" height="700" loading="lazy"><figcaption>Bus driver<small>Driver</small></figcaption></figure>
+        <figure class="person"><img src="people/zoya.webp?v=c1" alt="Girl with braids in a yellow dress, holding a butterfly" width="260" height="700" loading="lazy"><figcaption>Zoya<small>Friend</small></figcaption></figure>
+        <figure class="person"><img src="people/bilal.webp?v=c1" alt="Boy with curly hair in an orange polo, holding a red ball" width="260" height="700" loading="lazy"><figcaption>Bilal<small>Friend</small></figcaption></figure>
+        <figure class="person"><img src="people/sara.webp?v=c1" alt="Girl in a pink tunic and white hijab, waving" width="260" height="700" loading="lazy"><figcaption>Sara<small>Friend</small></figcaption></figure>
+        <figure class="person"><img src="people/zain.webp?v=c1" alt="Boy with spiky black hair in a green shirt and denim overalls" width="260" height="700" loading="lazy"><figcaption>Zain<small>Friend</small></figcaption></figure>
       </div>
     </div>
   </section>
