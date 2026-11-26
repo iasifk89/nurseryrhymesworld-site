@@ -143,6 +143,12 @@
   }
   .lists a:hover { border-color: var(--bubble); }
 
+  .friends { background: var(--card); }
+  .friends-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; margin-top: 28px; }
+  .friend { background: #fff; border-radius: var(--radius-small); overflow: hidden; box-shadow: 0 5px 0 var(--sky-deep); margin: 0; }
+  .friend img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+  .friend figcaption { padding: 12px 16px 14px; font: 600 1.15rem "Fredoka", sans-serif; }
+  .friend figcaption small { display: block; font: 400 .92rem "Atkinson Hyperlegible", system-ui, sans-serif; color: var(--ink-soft); }
   .parents ul { margin: 16px 0 0; padding-left: 1.2em; }
   .parents li + li { margin-top: 8px; }
   .family-pic { display: block; margin-top: 24px; width: 100%; height: auto; border-radius: var(--radius-big); }
@@ -190,6 +196,7 @@
       <a class="brand" href="#top" id="top"><img src="logo.webp" alt="" width="44" height="44">Nursery Rhymes World Z</a>
       <nav aria-label="Sections">
         <a href="#watch">Watch</a>
+        <a href="#friends">Friends</a>
         <a href="#parents">Viewers</a>
         <a href="#feedback">Feedback</a>
       </nav>
@@ -238,8 +245,23 @@
   <section id="family">
     <div class="wrap">
       <h2>Meet the family</h2>
-      <p class="section-lede">Hamad and Alayna sing along with Baba, Mama, Dada, Dadi, their bus driver and four friends.</p>
+      <p class="section-lede">Hamad and Alayna sing along with Baba, Mama, Dada, Dadi, Nani, Nana, their bus driver and friends.</p>
       <img class="family-pic" src="banner.webp?v=b1" alt="Nursery Rhymes World Z banner: Hamad and Alayna with Baba, Mama, Dada, Dadi, the bus driver and four friends under a rainbow, with the bus and playground" width="1600" height="900" loading="lazy">
+    </div>
+  </section>
+
+  <section id="friends" class="friends">
+    <div class="wrap">
+      <h2>Meet Nani, Nana and the friends</h2>
+      <p class="section-lede">More grandparents and friends who sing along on the bus and in the playground.</p>
+      <div class="friends-grid">
+        <figure class="friend"><img src="friends/nani.webp?v=n1" alt="Nani, a kind grandmother with grey hair in a mustard kurta and teal dupatta" width="900" height="502" loading="lazy"><figcaption>Nani<small>Grandmother</small></figcaption></figure>
+        <figure class="friend"><img src="friends/nana.webp?v=n1" alt="Nana, a kind grandfather with grey hair, glasses, a navy vest and cream kurta" width="900" height="502" loading="lazy"><figcaption>Nana<small>Grandfather</small></figcaption></figure>
+        <figure class="friend"><img src="friends/zoya.webp?v=n1" alt="Zoya, a happy girl with braids and a yellow dress, holding a butterfly" width="900" height="502" loading="lazy"><figcaption>Zoya<small>Friend</small></figcaption></figure>
+        <figure class="friend"><img src="friends/bilal.webp?v=n1" alt="Bilal, a boy with curly brown hair in an orange polo shirt, holding a red ball" width="900" height="502" loading="lazy"><figcaption>Bilal<small>Friend</small></figcaption></figure>
+        <figure class="friend"><img src="friends/sara.webp?v=n1" alt="Sara, a girl in a pink tunic and white hijab, waving" width="900" height="502" loading="lazy"><figcaption>Sara<small>Friend</small></figcaption></figure>
+        <figure class="friend"><img src="friends/zain.webp?v=n1" alt="Zain, a boy with spiky black hair in a green shirt and denim overalls" width="900" height="502" loading="lazy"><figcaption>Zain<small>Friend</small></figcaption></figure>
+      </div>
     </div>
   </section>
 
